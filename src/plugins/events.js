@@ -2,7 +2,6 @@
 
 const events = (function() {
   console.log('Loading Events module...');
-  const plugins = {}
   // addEventListener('gb-plugin', (event) => {
   //   console.log(event.type);
   //   console.log(event.detail);
