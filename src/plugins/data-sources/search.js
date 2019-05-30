@@ -13,13 +13,12 @@ const search = (function() {
     search: function(searchTerm) {
       axios.get('https://s3.amazonaws.com/groupby-sample/mock-data.json')
         .then(function(response) {
-          console.log(response);
-          console.log(response.data);
           const products = response.data.filter(product => {
-            // console.log(product);
-            return false
+            return product.name.toLowerCase().includes(searchTerm.toLowerCase())
           })
-          core.dispatch('cache', 'setQuery', [`search-${searchTerm}`])
+          console.log(products);
+          console.log(products.length);
+          // core.dispatch('cache', 'setQuery', [`search-${searchTerm}`])
         }).catch(function(error) {
           console.log(error);
         })
