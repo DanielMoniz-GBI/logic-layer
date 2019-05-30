@@ -8,7 +8,7 @@ const core = (function() {
       console.log('Plugin added:', plugin.name);
     },
     dispatch: function(pluginName, methodName, passedArgs) {
-      console.log(pluginName, methodName);
+      console.log(`Core - dispatching: ${pluginName}, ${methodName}`);
       const plugin = this.plugins[pluginName]
       if (plugin === undefined) {
         return `Plugin ${pluginName} does not exist.`

@@ -10,11 +10,7 @@ const events = (function() {
     name: 'events',
     description: 'Events module',
     testFunc: function(arg1, arg2, arg3) {
-      console.log('In test func with args: ---');
-      console.log(arg1);
-      console.log(arg2);
-      console.log(arg3);
-      console.log('---------------------------');
+      console.log('In test func with args:', arg1, arg2, arg3);
     },
   }
 })()
