@@ -1,6 +1,6 @@
 import core from './core'
 import events from './plugins/events'
-import search from './plugins/data-sources/search'
+import searchFactory from './plugins/data-sources/search'
 
 (function() {
   console.log(core);
@@ -9,6 +9,7 @@ import search from './plugins/data-sources/search'
   console.log(events);
   console.log('Events module loaded.');
 
+  const search = searchFactory(core);
   console.log(search);
   console.log('Search module loaded.');
 

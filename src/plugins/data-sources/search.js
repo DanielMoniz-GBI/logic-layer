@@ -2,7 +2,7 @@
 import axios from 'axios'
 console.log(axios.get);
 
-const search = (function() {
+export default function(core) {
   console.log('Loading Search module...');
   return {
     name: 'search',
@@ -16,15 +16,11 @@ const search = (function() {
           const products = response.data.filter(product => {
             return product.name.toLowerCase().includes(searchTerm.toLowerCase())
           })
-          console.log(products);
-          console.log(products.length);
-          // core.dispatch('cache', 'setQuery', [`search-${searchTerm}`])
+          core.dispatch('cache', 'setQuery', [`search-${searchTerm}`])
         }).catch(function(error) {
           console.log(error);
         })
       // @TODO Need to notify core of successful search so it can fire an event.
     },
   }
-})()
-
-export default search
+}
