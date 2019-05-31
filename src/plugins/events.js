@@ -9,8 +9,5 @@ export default function(core) {
   return {
     name: 'events',
     description: 'Events module',
-    testFunc: function(arg1, arg2, arg3) {
-      console.log('In test func with args:', arg1, arg2, arg3);
-    },
   }
 }

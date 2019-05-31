@@ -6,9 +6,6 @@ export default function(core) {
   return {
     name: 'search',
     description: 'Search module',
-    testFunc: function(arg1, arg2, arg3) {
-      console.log('In Search.testFunc');
-    },
     search: function(searchTerm) {
       return axios.get('https://s3.amazonaws.com/groupby-sample/mock-data.json')
         .then(function(response) {
