@@ -1,5 +1,5 @@
 
-const core = (function() {
+export default function() {
   console.log('Loading Core module...');
   const plugins = {}
   return {
@@ -24,6 +24,4 @@ const core = (function() {
     },
     plugins: {},
   }
-})()
-
-export default core
+}

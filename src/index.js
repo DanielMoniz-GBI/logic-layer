@@ -1,8 +1,9 @@
-import core from './core'
+import getCore from './core'
 import getEvents from './plugins/events'
 import getSearch from './plugins/data-sources/search'
 
 (function() {
+  const core = getCore()
   console.log(core);
   console.log('Core module loaded.');
 
