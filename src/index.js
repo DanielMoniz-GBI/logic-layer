@@ -17,18 +17,4 @@ import getSearch from './plugins/data-sources/search'
 
   core.addPlugin(events)
   core.addPlugin(search)
-
-  // test usage of core -----
-
-  // should succeed
-  core.dispatch('events', 'testFunc', ['arg1', 'arg2', 'arg3']) // through core
-  events.testFunc('arg1', 'arg2', 'arg3') // direct usage
-  core.dispatch('search', 'testFunc', ['arg1', 'arg2']) // through core
-  search.testFunc('arg1', 'arg2') // direct usage
-  //should fail
-  core.dispatch('asdf', 'testFunc')
-  core.dispatch('search', 'asdfsfgj')
-  core.dispatch('events', 'asdfsfgj')
-
-  core.dispatch('search', 'search', ['beef'])
 })()
