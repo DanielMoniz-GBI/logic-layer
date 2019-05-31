@@ -16,6 +16,7 @@ export default function(core) {
           //   'gbi-search-complete',
           //   { searchTerm }
           // ])
+          return products
         }).catch(function(error) {
           console.log(error);
         })

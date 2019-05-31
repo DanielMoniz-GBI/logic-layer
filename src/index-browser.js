@@ -15,9 +15,6 @@ import getSearch from './plugins/data-sources/search'
   core.addPlugin(cache)
   console.log('Logic layer ready for browser.');
 
-  search.search('beef')
-  search.search('fis')
-
   if (window._gbi === undefined) {
     window._gbi = {
       core,
