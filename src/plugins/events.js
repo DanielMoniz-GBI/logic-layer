@@ -1,8 +1,8 @@
 // Should have the ability to listen to and fire events.
 
 // addEventListener('gb-plugin', (event) => {
-//   console.log(event.type);
-//   console.log(event.detail);
+//   console.log(event.type)
+//   console.log(event.detail)
 // })
 
 export default function() {
