@@ -1,6 +1,6 @@
 // Should have the ability to listen to and fire events.
 
-const events = (function() {
+export default function(core) {
   console.log('Loading Events module...');
   // addEventListener('gb-plugin', (event) => {
   //   console.log(event.type);
@@ -13,6 +13,4 @@ const events = (function() {
       console.log('In test func with args:', arg1, arg2, arg3);
     },
   }
-})()
-
-export default events
+}

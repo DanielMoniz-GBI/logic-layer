@@ -1,15 +1,16 @@
 import core from './core'
-import events from './plugins/events'
-import searchFactory from './plugins/data-sources/search'
+import getEvents from './plugins/events'
+import getSearch from './plugins/data-sources/search'
 
 (function() {
   console.log(core);
   console.log('Core module loaded.');
 
+  const events = getEvents(core)
   console.log(events);
   console.log('Events module loaded.');
 
-  const search = searchFactory(core);
+  const search = getSearch(core);
   console.log(search);
   console.log('Search module loaded.');
 
