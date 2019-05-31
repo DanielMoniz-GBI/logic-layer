@@ -8,6 +8,17 @@ describe('cache', () => {
     cache = getCache()
   })
 
+  describe('contract', () => {
+    it('should have a name', () => {
+      expect(cache.name).to.equal('cache')
+    })
+
+    it('should have a description', () => {
+      expect(typeof cache.description).to.be.a('string')
+      expect(cache.description.length).to.be.greaterThan(0)
+    })
+  })
+
   describe('get', () => {
     it('should return undefined if key does not exist in cache', () => {
       expect(cache.get('missing-key')).to.equal(undefined)
