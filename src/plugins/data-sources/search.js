@@ -12,10 +12,10 @@ export default function(core) {
             return product.name.toLowerCase().includes(searchTerm.toLowerCase())
           }).slice(0, 12)
           core.dispatch('cache', 'set', [`search-${searchTerm}`, products])
-          // core.dispatch('events', 'dispatch', [
-          //   'gbi-search-complete',
-          //   { searchTerm }
-          // ])
+          core.dispatch('events', 'dispatch', [
+            'gbi-search-complete',
+            { searchTerm, products }
+          ])
           return products
         }).catch(function(error) {
           console.log(error)

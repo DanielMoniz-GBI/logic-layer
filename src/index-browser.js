@@ -23,4 +23,10 @@ import getSearch from './plugins/data-sources/search'
       cache,
     }
   }
+
+  // test
+  events.listen('gbi-search-complete', (event) => {
+    console.log('>> Test: Search complete!');
+    console.log('  >>', event.type, event.detail);
+  })
 })()
