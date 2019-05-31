@@ -11,14 +11,15 @@ export default function() {
       console.log(`Core - dispatching: ${pluginName}, ${methodName}`);
       const plugin = this.plugins[pluginName]
       if (plugin === undefined) {
-        return `Plugin ${pluginName} does not exist.`
+        console.warn(`Plugin ${pluginName} does not exist.`)
+        return false
       }
       const func = plugin[methodName]
       if (func === undefined) {
-        return `Method ${methodName} does not exist in plugin ${pluginName}.`
+        throw new Error(`Method ${methodName} does not exist in plugin ${pluginName}.`)
       }
       if (typeof func !== 'function') {
-        return `${methodName} in plugin ${pluginName} is not a method, but a ${typeof func}.`
+        throw new Error(`${methodName} in plugin ${pluginName} is not a method, but a ${typeof func}.`)
       }
       return func.apply(plugin, passedArgs)
     },
