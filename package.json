@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "npx webpack --config webpack.config.js --watch",
     "test": "mocha-webpack 'test/**/*.test.js'",
-    "test:watch": "mocha-webpack 'test/**/*.test.js' --watch",
+    "test:watch": "mocha-webpack './**/*.test.js' --watch",
     "start": "node dist/index.js"
   },
   "author": "",
