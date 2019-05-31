@@ -1,7 +1,6 @@
 
 export default function() {
   console.log('Loading Core module...');
-  const plugins = {}
   return {
     addPlugin: function(plugin) {
       this.plugins[plugin.name] = plugin

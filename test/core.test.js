@@ -24,9 +24,6 @@ describe('core', () => {
   })
 
   describe('dispatch', () => {
-    // beforeEach(() => {
-    // })
-
     it('should return false if a plugin does not exist', () => {
       expect(core.dispatch('fake-plugin', 'some-method'))
         .to.equal(false)
