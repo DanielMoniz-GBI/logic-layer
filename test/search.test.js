@@ -9,9 +9,20 @@ describe('search module', () => {
     search = getSearch(core)
   })
 
-  describe('search', () => {
+  describe('contract', () => {
     it('should have a name', () => {
       expect(search.name).to.equal('search')
+    })
+
+    it('should have a description', () => {
+      expect(typeof search.description).to.be.a('string')
+      expect(search.description.length).to.be.greaterThan(0)
+    })
+  })
+
+  describe('search', () => {
+    it('should exist', () => {
+      expect(search.search).to.be.a('function')
     })
   })
 })
