@@ -1,7 +1,8 @@
-const core = require('../src/core')
-const getSearch = require('../src/plugins/data-sources/search').default
 const chai = require('chai')
 const expect = chai.expect
+
+const core = require('../src/core')
+const getSearch = require('../src/plugins/data-sources/search').default
 
 describe('search module', () => {
   let search
