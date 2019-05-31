@@ -2,7 +2,6 @@
 import axios from 'axios'
 
 export default function(core) {
-  console.log('Loading Search module...');
   return {
     name: 'search',
     description: 'Search module',

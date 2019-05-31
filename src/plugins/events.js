@@ -1,13 +1,13 @@
 // Should have the ability to listen to and fire events.
 
-export default function(core) {
-  console.log('Loading Events module...');
-  // addEventListener('gb-plugin', (event) => {
-  //   console.log(event.type);
-  //   console.log(event.detail);
-  // })
+// addEventListener('gb-plugin', (event) => {
+//   console.log(event.type);
+//   console.log(event.detail);
+// })
+
+export default function() {
   return {
     name: 'events',
-    description: 'Events module',
+    description: 'Allows other plugins to fire and listen for events.',
   }
 }
