@@ -12,4 +12,7 @@ import getSearch from './plugins/data-sources/search'
   core.addPlugin(events)
   core.addPlugin(search)
   core.addPlugin(cache)
+
+  search.search('beef')
+  search.search('fis')
 })()
