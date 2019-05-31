@@ -20,7 +20,6 @@ export default function(core) {
         }).catch(function(error) {
           console.log(error)
         })
-      // @TODO Need to notify core of successful search so it can fire an event.
     },
   }
 }
