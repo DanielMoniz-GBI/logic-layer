@@ -1,6 +1,5 @@
 // Should be able to provide products given a search term.
 import axios from 'axios'
-console.log(axios.get);
 
 export default function(core) {
   console.log('Loading Search module...');
