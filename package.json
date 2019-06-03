@@ -6,6 +6,7 @@
   "scripts": {
     "watch": "npx webpack --config webpack.config.js --watch",
     "test": "mocha-webpack 'test/**/*.test.js'",
+    "test:browser": "karma start --single-run --browsers ChromeHeadless,FirefoxHeadless,IE karma.conf.js",
     "test:watch": "mocha-webpack './**/*.test.js' --watch",
     "start:node": "node dist/index-node.js",
     "start": "http-server dist/"
@@ -17,6 +18,12 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "karma": "^4.1.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
     "mocha": "^6.1.4",
     "mocha-webpack": "^2.0.0-beta.0",
     "webpack": "^4.32.2",
