@@ -5,7 +5,7 @@ module.exports = {
   target: 'node',
   node: { process: false },
   entry: {
-    node: './src/index.js',
+    node: './src/index-node.js',
     browser: './src/index-browser.js',
   },
   output: {
