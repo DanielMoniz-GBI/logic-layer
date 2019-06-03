@@ -1,16 +1,16 @@
-// Should have the ability to listen to and fire events.
-
-// addEventListener('gb-plugin', (event) => {
-//   console.log(event.type)
-//   console.log(event.detail)
-// })
+import EventEmitter from 'events'
 
 export default function() {
+  const emitter = new EventEmitter()
   return {
     name: 'events',
     description: 'Allows other plugins to fire and listen for events.',
     listen: function(type, callback) {
-      // return addEventListener(type, callback)
+      return emitter.on(type, callback)
     },
+    dispatch: function(type, payload) {
+      emitter.emit(type, 'test1', 'test2')
+    },
+    // @TODO Allow for clearing all listeners?
   }
 }

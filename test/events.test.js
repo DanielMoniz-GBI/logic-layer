@@ -27,6 +27,7 @@ describe('events', () => {
     it('should call the provided function after the relevant event type', () => {
       let eventCalled = false
       events.listen('test-event', () => eventCalled = true)
+      events.dispatch('test-event')
 
       expect(eventCalled).to.be.true
     })
