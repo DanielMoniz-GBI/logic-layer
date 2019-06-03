@@ -28,8 +28,16 @@ describe('events', () => {
       let eventCalled = false
       events.listen('test-event', () => eventCalled = true)
       events.dispatch('test-event')
-
       expect(eventCalled).to.be.true
+    })
+
+    it('should receive an event object with a type and a detail payload', () => {
+      const payload = { key1: 'val1', key2: 'val2' }
+      events.listen('test-event', (event) => {
+        expect(event.type).to.equal('test-event')
+        expect(event.detail).to.deep.equal(payload)
+      })
+      events.dispatch('test-event', payload)
     })
   })
 })

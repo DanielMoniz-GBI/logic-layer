@@ -9,7 +9,11 @@ export default function() {
       return emitter.on(type, callback)
     },
     dispatch: function(type, payload) {
-      emitter.emit(type, 'test1', 'test2')
+      const event = {
+        type,
+        detail: payload,
+      }
+      emitter.emit(type, event)
     },
     // @TODO Allow for clearing all listeners?
   }
