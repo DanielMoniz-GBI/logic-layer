@@ -22,10 +22,37 @@ export default function(core) {
     return false
   }
 
+  const getRecommendations = function(searchTerm, quantity=12) {
+    const searchKey = `sayt-${searchTerm}`
+    const cachedResults = getCachedResults(searchKey)
+    if (cachedResults) {
+      core.dispatch('events', 'dispatch', ['gb-provide-sayt-suggestions', cachedResults])
+      return cachedResults
+    }
+
+    core.dispatch('events', 'dispatch', ['gbi-search-start'])
+
+    return search(searchTerm, quantity)
+      .then((products) => {
+        core.dispatch('cache', 'set', [searchKey, products])
+        core.dispatch('events', 'dispatch', [
+          'gbi-search-complete',
+          { searchTerm, products }
+        ])
+        core.dispatch('events', 'dispatch', ['gb-provide-sayt-suggestions', products])
+      })
+  }
+
+  const listenForSayt = (event) => {
+    return getRecommendations(event.detail.searchTerm, event.detail.quantity)
+  }
+  core.dispatch('events', 'listen', ['gb-request-sayt-suggestions', listenForSayt])
+
   return {
     name: 'search',
     description: 'Search module',
-    search: function(searchTerm, quantity=12) {
+    getRecommendations,
+    search: function(searchTerm, quantity=24) {
       const searchKey = `search-${searchTerm}`
       const cachedResults = getCachedResults(searchKey)
       if (cachedResults) { return cachedResults }
