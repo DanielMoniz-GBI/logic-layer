@@ -20,4 +20,11 @@ describe('search with cache', () => {
     expect(cachedSearch).to.be.an('Array')
     expect(cachedSearch.length).to.be.greaterThan(0)
   })
+
+  it('should use a cached search if a matching one is present', async () => {
+    const sampleResults = [1, 2, 3]
+    core.dispatch('cache', 'set', ['search-beef', sampleResults])
+    const result = await core.dispatch('search', 'search', ['beef'])
+    expect(result).to.deep.equal(sampleResults)
+  })
 })
