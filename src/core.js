@@ -3,10 +3,10 @@ export default function() {
   return {
     addPlugin: function(plugin) {
       this.plugins[plugin.name] = plugin
-      console.log('Plugin added:', plugin.name);
+      console.log('Plugin added:', plugin.name)
     },
     dispatch: function(pluginName, methodName, passedArgs) {
-      console.log(`Core - dispatching: ${pluginName}, ${methodName}`);
+      console.log(`Core - dispatching: ${pluginName}, ${methodName}`)
       const plugin = this.plugins[pluginName]
       if (plugin === undefined) {
         console.warn(`Plugin ${pluginName} does not exist.`)

@@ -1,12 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   target: 'node',
   node: { process: false },
-  entry: './src/index.js',
+  entry: {
+    node: './src/index-node.js',
+    browser: './src/index-browser.js',
+  },
   output: {
-    filename: 'index.js',
+    filename: 'index-[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   watch: true,
@@ -15,4 +18,4 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ],
-};
+}
