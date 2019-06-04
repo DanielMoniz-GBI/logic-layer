@@ -10,7 +10,7 @@ Run:
 * `npm run watch` to build the application and to auto-rebuild after any app changes.
 * `npm start` to run the server
 
-Then visit http://localhost:8080 to run the application in the browser.
+Then visit http://localhost:8080/client-example/ to run the application in the browser.
 
 > NOTE: at the time of this writing, the application runs in the browser, but doesn't do very much. It exists as a proof of concept to ensure that the logic layer can run in the browser.
 
