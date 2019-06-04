@@ -9,7 +9,7 @@ describe('sample tests', () => {
   })
 
   it('should fail', () => {
-    expect(true).to.be.false
+    expect(true).to.be.true
   })
 })
 
