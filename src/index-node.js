@@ -1,5 +1,5 @@
 import getCore from './core'
-import getEvents from './plugins/events'
+import getEvents from './plugins/events-node'
 import getCache from './plugins/cache'
 import getSearch from './plugins/data-sources/search'
 

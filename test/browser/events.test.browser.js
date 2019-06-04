@@ -1,6 +1,4 @@
-const expect = require('chai').expect
-
-const getEvents = require('../src/plugins/events-node').default
+import getEvents from '/base/src/plugins/events-browser.js'
 
 describe('events', () => {
   let events
