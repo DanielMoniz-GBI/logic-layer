@@ -17,16 +17,23 @@ export default function(core) {
   const getCachedResults = function(searchKey) {
     const cachedResults = core.dispatch('cache', 'get', [searchKey])
     if (cachedResults) {
-      return new Promise((resolve, _) => resolve(cachedResults))
+      return cachedResults
     }
     return false
+  }
+
+  const sendSaytSuggestions = (products) => {
+    core.dispatch('events', 'dispatch', [
+      'gb-provide-sayt-suggestions',
+      { products },
+    ])
   }
 
   const getRecommendations = function(searchTerm, quantity=12) {
     const searchKey = `sayt-${searchTerm}`
     const cachedResults = getCachedResults(searchKey)
     if (cachedResults) {
-      core.dispatch('events', 'dispatch', ['gb-provide-sayt-suggestions', cachedResults])
+      sendSaytSuggestions(cachedResults)
       return cachedResults
     }
 
@@ -39,10 +46,7 @@ export default function(core) {
           'gbi-search-complete',
           { searchTerm, products }
         ])
-        core.dispatch('events', 'dispatch', [
-          'gb-provide-sayt-suggestions',
-          { products },
-        ])
+        sendSaytSuggestions(products)
       })
   }
 
@@ -58,7 +62,7 @@ export default function(core) {
     search: function(searchTerm, quantity=24) {
       const searchKey = `search-${searchTerm}`
       const cachedResults = getCachedResults(searchKey)
-      if (cachedResults) { return cachedResults }
+      if (cachedResults) { return Promise.resolve(cachedResults) }
 
       core.dispatch('events', 'dispatch', ['gbi-search-start'])
 

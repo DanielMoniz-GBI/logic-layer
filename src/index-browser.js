@@ -2,7 +2,6 @@ import getCore from './core'
 import getEvents from './plugins/events-browser'
 import getCache from './plugins/cache'
 import getSearch from './plugins/data-sources/search'
-import getSayt from './plugins/data-sources/sayt'
 
 (function() {
   console.log('Setting up logic layer for browser...')
@@ -11,11 +10,9 @@ import getSayt from './plugins/data-sources/sayt'
   core.addPlugin(events)
 
   const search = getSearch(core)
-  const sayt = getSayt(core)
   const cache = getCache(core)
 
   core.addPlugin(search)
-  core.addPlugin(sayt)
   core.addPlugin(cache)
   console.log('Logic layer ready for browser.')
 
@@ -24,7 +21,6 @@ import getSayt from './plugins/data-sources/sayt'
       core,
       events,
       search,
-      sayt,
       cache,
     }
   }
