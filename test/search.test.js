@@ -1,10 +1,11 @@
 const chai = require('chai')
 const expect = chai.expect
 
-const core = require('../src/core')
+const getCore = require('../src/core').default
 const getSearch = require('../src/plugins/data-sources/search').default
 
 describe('search module', () => {
+  const core = getCore()
   let search
   beforeEach(() => {
     search = getSearch(core)

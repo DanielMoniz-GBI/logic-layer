@@ -7,10 +7,11 @@ import getSearch from './plugins/data-sources/search'
   console.log('Setting up logic layer for browser...')
   const core = getCore()
   const events = getEvents(core)
+  core.addPlugin(events)
+
   const search = getSearch(core)
   const cache = getCache(core)
 
-  core.addPlugin(events)
   core.addPlugin(search)
   core.addPlugin(cache)
   console.log('Logic layer ready for browser.')
@@ -23,10 +24,4 @@ import getSearch from './plugins/data-sources/search'
       cache,
     }
   }
-
-  // test
-  events.listen('gbi-search-complete', (event) => {
-    console.log('>> Test: Search complete!');
-    console.log('  >>', event.type, event.detail);
-  })
 })()
