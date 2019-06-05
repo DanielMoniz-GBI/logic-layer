@@ -12,8 +12,6 @@ Run:
 
 Then visit http://localhost:8080/client-example/ to run the application in the browser.
 
-> NOTE: at the time of this writing, the application runs in the browser, but doesn't do very much. It exists as a proof of concept to ensure that the logic layer can run in the browser.
-
 
 ## Testing
 
@@ -74,8 +72,6 @@ Search is a simple plugin that makes a web request against some mock product dat
 * tell a cache plugin that it should cache the new results
 * dispatch the event `gbi-search-complete` with the search term and the products to inform any listeners (including the View Layer) that there are new search results.
 
-Search exposes the following method:
-* `search` --> perform a search against a sample web endpoint.
-
-To do:
-* first ask the cache for results under the match search key. If they exist, do not make the web request.
+Search exposes the following methods:
+* `search` --> perform a search against a sample web endpoint and emits an event on success.
+* `getRecommendations` --> ask for product recommendations against a sample web endpoint and emits an event on success.
