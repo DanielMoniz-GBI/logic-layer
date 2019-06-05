@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 export default function(core) {
-  const search = function(searchTerm, quantity) {
+  const getProducts = function(searchTerm, quantity) {
     return axios.get('https://s3.amazonaws.com/groupby-sample/mock-data.json')
       .then(function(response) {
         const products = response.data.filter(product => {
@@ -43,11 +43,25 @@ export default function(core) {
 
     core.dispatch('events', 'dispatch', ['gbi-search-start'])
 
-    return search(searchTerm, quantity)
+    return getProducts(searchTerm, quantity)
       .then((products) => {
         core.dispatch('cache', 'set', [searchKey, products])
         sendSearchComplete(searchTerm, products)
         sendSaytSuggestions(products)
+      })
+  }
+
+  const search = function(searchTerm, quantity=24) {
+    const searchKey = `search-${searchTerm}`
+    const cachedResults = getCachedResults(searchKey)
+    if (cachedResults) { return Promise.resolve(cachedResults) }
+
+    core.dispatch('events', 'dispatch', ['gbi-search-start'])
+
+    return getProducts(searchTerm, quantity)
+      .then((products) => {
+        core.dispatch('cache', 'set', [searchKey, products])
+        sendSearchComplete(searchTerm, products)
       })
   }
 
@@ -60,18 +74,6 @@ export default function(core) {
     name: 'search',
     description: 'Search module',
     getRecommendations,
-    search: function(searchTerm, quantity=24) {
-      const searchKey = `search-${searchTerm}`
-      const cachedResults = getCachedResults(searchKey)
-      if (cachedResults) { return Promise.resolve(cachedResults) }
-
-      core.dispatch('events', 'dispatch', ['gbi-search-start'])
-
-      return search(searchTerm, quantity)
-        .then((products) => {
-          core.dispatch('cache', 'set', [searchKey, products])
-          sendSearchComplete(searchTerm, products)
-        })
-    },
+    search,
   }
 }
