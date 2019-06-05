@@ -16,16 +16,20 @@ export default function(core) {
 
   const getCachedResults = function(searchKey) {
     const cachedResults = core.dispatch('cache', 'get', [searchKey])
-    if (cachedResults) {
-      return cachedResults
-    }
-    return false
+    return cachedResults || false
   }
 
   const sendSaytSuggestions = (products) => {
     core.dispatch('events', 'dispatch', [
       'gb-provide-sayt-suggestions',
       { products },
+    ])
+  }
+
+  const sendSearchComplete = (searchTerm, products) => {
+    core.dispatch('events', 'dispatch', [
+      'gbi-search-complete',
+      { searchTerm, products }
     ])
   }
 
@@ -42,10 +46,7 @@ export default function(core) {
     return search(searchTerm, quantity)
       .then((products) => {
         core.dispatch('cache', 'set', [searchKey, products])
-        core.dispatch('events', 'dispatch', [
-          'gbi-search-complete',
-          { searchTerm, products }
-        ])
+        sendSearchComplete(searchTerm, products)
         sendSaytSuggestions(products)
       })
   }
@@ -69,10 +70,7 @@ export default function(core) {
       return search(searchTerm, quantity)
         .then((products) => {
           core.dispatch('cache', 'set', [searchKey, products])
-          core.dispatch('events', 'dispatch', [
-            'gbi-search-complete',
-            { searchTerm, products }
-          ])
+          sendSearchComplete(searchTerm, products)
         })
     },
   }
