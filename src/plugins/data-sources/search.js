@@ -15,8 +15,7 @@ export default function(core) {
   }
 
   const getCachedResults = function(searchKey) {
-    const cachedResults = core.dispatch('cache', 'get', [searchKey])
-    return cachedResults || false
+    return core.dispatch('cache', 'get', [searchKey]) || false
   }
 
   const sendSaytSuggestions = (products) => {
