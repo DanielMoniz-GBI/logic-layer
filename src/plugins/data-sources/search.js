@@ -39,7 +39,10 @@ export default function(core) {
           'gbi-search-complete',
           { searchTerm, products }
         ])
-        core.dispatch('events', 'dispatch', ['gb-provide-sayt-suggestions', products])
+        core.dispatch('events', 'dispatch', [
+          'gb-provide-sayt-suggestions',
+          { products },
+        ])
       })
   }
 
